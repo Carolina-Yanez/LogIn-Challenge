@@ -137,6 +137,50 @@
     transform: translateY(-1px);
 }
 
+.submit-btn:disabled {
+    background: #6c757d !important;
+    color: #ffffff !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+    pointer-events: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.submit-btn:disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: #6c757d !important;
+}
+
+/* Estilos para errores de validación */
+.form-group input.error {
+    border-color: #e74c3c;
+    background-color: #fff5f5;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.form-group input.error:focus {
+    border-color: #e74c3c;
+    background-color: #fff5f5;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.error::before {
+    content: '⚠';
+    font-size: 10px;
+}
+
 .terms-checkbox {
     display: flex;
     align-items: flex-start;

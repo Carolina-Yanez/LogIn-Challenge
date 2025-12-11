@@ -5,16 +5,22 @@
             <p>Ingresa tus credenciales para continuar</p>
         </div>
 
-        <form class="login-form">
+        <form class="login-form" [formGroup]="actorForm" (ngSubmit)="ingresar()">
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
                 <input 
                     type="email" 
                     id="email" 
-                    name="email" 
+                    formControlName="email"
                     placeholder="ejemplo@correo.com"
-                    required
+                    [class.error]="actorForm.get('email')?.invalid && actorForm.get('email')?.touched"
                 >
+                @if (actorForm.get('email')?.hasError('email') && actorForm.get('email')?.touched) {
+                    <div class="error">Ingrese un email válido</div>
+                }
+                @if (actorForm.get('email')?.hasError('required') && actorForm.get('email')?.touched) {
+                    <div class="error">Ingrese un usuario</div>
+                }
             </div>
 
             <div class="form-group">
@@ -22,17 +28,23 @@
                 <input 
                     type="password" 
                     id="password" 
-                    name="password" 
+                    formControlName="password"
                     placeholder="Ingresa tu contraseña"
-                    required
+                    [class.error]="actorForm.get('password')?.invalid && actorForm.get('password')?.touched"
                 >
+                @if (actorForm.get('password')?.hasError('required') && actorForm.get('password')?.touched) {
+                    <div class="error">Ingrese su contraseña</div>
+                }
             </div>
 
             <!-- <div class="forgot-password">
                 <a href="#">¿Olvidaste tu contraseña?</a>
             </div> -->
 
-            <button type="submit" class="submit-btn">
+            <button 
+                type="submit" 
+                class="submit-btn"
+                [disabled]="actorForm.invalid || actorForm.pending">
                 Iniciar Sesión
             </button>
         </form>
