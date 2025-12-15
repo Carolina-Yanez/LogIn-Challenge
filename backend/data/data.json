@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "name": "Carolina",
+    "email": "carolina.yanez@globant.com",
+    "password": "AAAA1234",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcm9saW5hLnlhbmV6QGdsb2JhbnQuY29tIiwiaWF0IjoxNzY1NTk0MzkzLCJleHAiOjE3NjU1OTc5OTN9.UFVI3UW5B1GRpuYLLnB7OgthjuCZNtq8bMpn_GgOaFM",
+    "counterLogIn": 2,
+    "lastLogIn": "2025-12-13T02:53:13.651Z"
+  }
+]

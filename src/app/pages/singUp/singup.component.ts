@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
-import { user } from "../../interfaces/user.interface";
+import { user } from "../../interfaces/SignUpUser.interface";
 import { FormGroup } from "@angular/forms";
 import { ValidationService } from "../../services/validation.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
     templateUrl:'./signup.component.html',
@@ -14,26 +15,22 @@ import { ValidationService } from "../../services/validation.service";
 export class signUpPageComponent {
     actorForm: FormGroup
 
-    constructor(private validationService: ValidationService){
+    constructor(private validationService: ValidationService, private authService: AuthService){
         this.actorForm = this.validationService.createRegisterForm()
     }
 
     registrar() {
         if (this.actorForm.valid) {
-            const formValue = this.actorForm.value;
+            const {name, email, password} = this.actorForm.value
             
-            const newUser: user = {
-                name: formValue.name,
-                email: formValue.email,
-                password: formValue.password,
-                token: '',
-                counterLogIn: 0,
-                lastLogIn: new Date()
-            }
-
-            //Prueba vista de datos
-            console.log(`${formValue.password} - ${formValue.confirmPassword}`)
-            console.log('Usuario registrado:', newUser);
+            this.authService.register(name, email, password).subscribe({
+                next: (res) => {
+                    console.log("Registro Ok");
+                },
+                error: (err) => {
+                    console.log("Error", err);
+                }
+            })
         }
     }
 }
