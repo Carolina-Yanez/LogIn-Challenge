@@ -42,7 +42,9 @@ export class ValidationService {
 
       password: new FormControl('', [
         Validators.required
-      ])
+      ]),
+
+      isAdminLogin: new FormControl(false)
     });
   }
 

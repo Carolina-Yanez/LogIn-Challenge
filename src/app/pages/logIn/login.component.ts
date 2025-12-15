@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { ValidationService } from "../../services/validation.service";
 import { AuthService } from "../../services/auth.service";
 
@@ -13,18 +13,18 @@ import { AuthService } from "../../services/auth.service";
 export class loginPageComponent {
     actorForm: FormGroup
 
-    constructor(private validationService: ValidationService, private authService: AuthService) {
+    constructor(private validationService: ValidationService, private authService: AuthService, private router: Router) {
         this.actorForm = this.validationService.createLoginForm()
     }
 
     ingresar() {
         if (this.actorForm.valid) {
-            const { email, password } = this.actorForm.value;
+            const { email, password, isAdminLogin } = this.actorForm.value;
 
-            this.authService.login(email, password)
+            this.authService.login(email, password, isAdminLogin)
                 .subscribe({
-                    next: (res) => {
-                        console.log("Login OK:", res);
+                    next: () => {
+                        this.router.navigate(['/dashboard'])
                     },
                     error: (err) => {
                         console.error("Error:", err);

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 import { user } from "../../interfaces/SignUpUser.interface";
 import { FormGroup } from "@angular/forms";
@@ -15,7 +15,7 @@ import { AuthService } from "../../services/auth.service";
 export class signUpPageComponent {
     actorForm: FormGroup
 
-    constructor(private validationService: ValidationService, private authService: AuthService){
+    constructor(private validationService: ValidationService, private authService: AuthService, private router: Router){
         this.actorForm = this.validationService.createRegisterForm()
     }
 
@@ -24,8 +24,8 @@ export class signUpPageComponent {
             const {name, email, password} = this.actorForm.value
             
             this.authService.register(name, email, password).subscribe({
-                next: (res) => {
-                    console.log("Registro Ok");
+                next: () => {
+                    this.router.navigate(['/dashboard'])
                 },
                 error: (err) => {
                     console.log("Error", err);

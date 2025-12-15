@@ -19,6 +19,8 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     const token = this.auth.getToken();
+    console.log('Interceptor - URL:', req.url);
+    console.log('Interceptor - Token:', token ? 'Token present' : 'No token');
 
     let modifiedReq = req;
 
@@ -29,6 +31,7 @@ export class AuthInterceptor implements HttpInterceptor {
           Authorization: `Bearer ${token}`
         }
       });
+      console.log('Interceptor - Headers added:', modifiedReq.headers.get('Authorization'));
     }
 
     return next.handle(modifiedReq).pipe(

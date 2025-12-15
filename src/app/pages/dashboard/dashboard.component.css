@@ -1,0 +1,284 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  color: #333;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #c82333;
+}
+
+/* Loading and Error States */
+.loading, .error {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.loading p {
+  font-size: 18px;
+  color: #666;
+}
+
+.error {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  color: #721c24;
+}
+
+.retry-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: #0056b3;
+}
+
+/* Welcome Section */
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.welcome-section h2 {
+  color: #333;
+  font-size: 1.8em;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Cards */
+.user-info-card, .admin-info-card, .stats-card, .users-table-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.user-info-card h3, .admin-info-card h3, .stats-card h3, .users-table-card h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 1.4em;
+  font-weight: 600;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-item label {
+  font-weight: 600;
+  color: #555;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item span {
+  font-size: 16px;
+  color: #333;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 5px;
+  border-left: 4px solid #007bff;
+}
+
+/* Role Badges */
+.role-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.role-badge.admin, .role-badge.role-admin {
+  background: #dc3545;
+  color: white;
+}
+
+.role-badge.role-user {
+  background: #28a745;
+  color: white;
+}
+
+/* Stats */
+.stats-summary {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #007bff;
+  min-width: 150px;
+}
+
+.stat-number {
+  display: block;
+  font-size: 3em;
+  font-weight: 700;
+  color: #007bff;
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+/* Users Table */
+.table-container {
+  overflow-x: auto;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.users-table th {
+  background: #f8f9fa;
+  padding: 15px 10px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #dee2e6;
+  white-space: nowrap;
+}
+
+.users-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #dee2e6;
+  color: #333;
+}
+
+.users-table tr:hover {
+  background: #f8f9fa;
+}
+
+.users-table tr:nth-child(even) {
+  background: #fdfdfd;
+}
+
+.users-table tr:nth-child(even):hover {
+  background: #f8f9fa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 15px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .dashboard-header h1 {
+    font-size: 2em;
+  }
+
+  .welcome-section h2 {
+    font-size: 1.4em;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-summary {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .users-table {
+    font-size: 14px;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 8px 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.8em;
+  }
+
+  .welcome-section h2 {
+    font-size: 1.2em;
+  }
+
+  .user-info-card, .admin-info-card, .stats-card, .users-table-card {
+    padding: 15px;
+  }
+
+  .table-container {
+    margin: 0 -15px;
+  }
+}

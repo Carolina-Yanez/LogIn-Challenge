@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 export interface User {
   name: string;
   email: string;
+  role?: string;
 }
 
 export interface AuthResponse {
@@ -32,8 +33,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.API_URL}/login`, { email, password })
+  login(email: string, password: string, isAdminLogin: boolean = false): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.API_URL}/login`, { email, password, isAdminLogin })
       .pipe(
         tap((response) => {
           this.saveAuthData(response.token, response.user);

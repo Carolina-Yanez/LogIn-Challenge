@@ -1,0 +1,132 @@
+<div class="dashboard-container">
+
+  <!-- Header -->
+  <header class="dashboard-header">
+    <h1>Dashboard</h1>
+    <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
+  </header>
+
+  <!-- Loading State -->
+  @if (loading()) {
+    <div class="loading">
+      <p>Cargando datos...</p>
+    </div>
+  }
+
+  <!-- Error State -->
+  @if (!loading() && error()) {
+    <div class="error">
+      <p>{{ error() }}</p>
+      <button (click)="loadMetrics()" class="retry-btn">Reintentar</button>
+    </div>
+  }
+
+  <!-- User Dashboard -->
+  @if (!loading() && !error() && !isAdmin() && userMetrics()) {
+    <div class="user-dashboard">
+
+      <div class="welcome-section">
+        <h2>¡Bienvenido, {{ userMetrics()?.name }}!</h2>
+      </div>
+
+      <div class="user-info-card">
+        <h3>Tu Información</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Nombre:</label>
+            <span>{{ userMetrics()?.name }}</span>
+          </div>
+          <div class="info-item">
+            <label>Email:</label>
+            <span>{{ userMetrics()?.email }}</span>
+          </div>
+          <div class="info-item">
+            <label>Número de inicios de sesión:</label>
+            <span>{{ userMetrics()?.counterLogin }}</span>
+          </div>
+          <div class="info-item">
+            <label>Último inicio de sesión:</label>
+            <span>
+              {{ userMetrics()?.lastLogin ? formatDate(userMetrics()!.lastLogin.toString()) : 'N/A' }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  }
+
+  <!-- Admin Dashboard -->
+  @if (!loading() && !error() && isAdmin() && adminMetrics()) {
+    <div class="admin-dashboard">
+
+      <div class="welcome-section">
+        <h2>Panel de Administración - ¡Bienvenido, {{ adminMetrics()?.user?.name }}!</h2>
+      </div>
+
+      <div class="admin-info-card">
+        <h3>Tu Información</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Nombre:</label>
+            <span>{{ adminMetrics()?.user?.name }}</span>
+          </div>
+          <div class="info-item">
+            <label>Email:</label>
+            <span>{{ adminMetrics()?.user?.email }}</span>
+          </div>
+          <div class="info-item">
+            <label>Rol:</label>
+            <span class="role-badge admin">{{ adminMetrics()?.user?.role }}</span>
+          </div>
+          <div class="info-item">
+            <label>Inicios de sesión:</label>
+            <span>{{ adminMetrics()?.user?.counterLogIn }}</span>
+          </div>
+          <div class="info-item">
+            <label>Último login:</label>
+            <span>
+              {{ adminMetrics()?.user?.lastLogIn ? formatDate(adminMetrics()!.user!.lastLogIn.toString()) : 'N/A' }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-card">
+        <h3>Estadísticas del Sistema</h3>
+        <div class="stat-item">
+          <span class="stat-number">{{ adminMetrics()?.totalUsers }}</span>
+          <span class="stat-label">Usuarios Totales</span>
+        </div>
+      </div>
+
+      <div class="users-table-card">
+        <h3>Todos los Usuarios</h3>
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Inicios</th>
+              <th>Último Login</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of adminMetrics()?.users; track user.email) {
+              <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.counterLogin }}</td>
+                <td>{{ formatDate(user.lastLogin.toString()) }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  }
+
+</div>
