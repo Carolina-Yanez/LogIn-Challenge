@@ -5,7 +5,7 @@ import path from "path";
 
 const bd = path.join(__dirname, "..", "data", "data.json");
 
-export const loginService = (email: string, password: string) => {
+export const loginService = (email: string, password: string, isAdminLogin: boolean = false) => {
     const users: User[] = JSON.parse(fs.readFileSync(bd, "utf-8"))
 
     const user = users.find((u: User) => u.email === email)
@@ -15,7 +15,12 @@ export const loginService = (email: string, password: string) => {
         return null
     }
 
-    const generatedToken = generateToken(email)
+    // Validate role if admin login is requested
+    if (isAdminLogin && user.role !== 'ADMIN') {
+        throw new Error("Access denied. Admin credentials required.")
+    }
+
+    const generatedToken = generateToken({email: user.email, role: user.role})
     user.token = generatedToken
 
     // Update login counter and last login time
@@ -38,7 +43,7 @@ export const signupService = (name: string, email: string, password: string) => 
         throw new Error("User with this email already exists")
     }
 
-    const generatedToken = generateToken(email)
+    const generatedToken = generateToken({email: email, role:'USER'})
 
     const user: User = {
         name: name,
@@ -46,7 +51,8 @@ export const signupService = (name: string, email: string, password: string) => 
         password: password,
         token: generatedToken,
         counterLogIn: 1,
-        lastLogIn: new Date()
+        lastLogIn: new Date(),
+        role: 'USER'
     }
 
     //Add new user

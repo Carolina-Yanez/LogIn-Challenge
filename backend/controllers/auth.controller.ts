@@ -8,16 +8,17 @@ import path from "path";
 const bd = path.join(__dirname, "..", "data", "data.json");
 
 export const loginController = (req: Request, res: Response) => {
-    const {email, password} = req.body
+    const {email, password, isAdminLogin} = req.body
 
     try{
-        const user = loginService(email, password)
+        const user = loginService(email, password, isAdminLogin)
         return res.json({
             message: "Login Succesful",
             token: user?.token,
             user:{
                 name: user?.name,
-                email: user?.email
+                email: user?.email,
+                role: user?.role
             }
         })
     }
