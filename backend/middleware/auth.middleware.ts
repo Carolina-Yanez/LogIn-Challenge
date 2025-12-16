@@ -13,7 +13,7 @@ declare global {
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     try {
         const authHeader = req.headers.authorization;
-        if (!authHeader) return res.status(401).json({ message: "Missing token" });
+        if (!authHeader) return res.status(401);
 
         const token = authHeader.split(" ")[1];
         const decoded = verifyToken(token);
@@ -21,6 +21,6 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
         req.user = decoded;
         next();
     } catch {
-        return res.status(401).json({ message: "Invalid token" });
+        return res.status(401);
     }
 }

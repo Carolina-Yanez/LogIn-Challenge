@@ -12,6 +12,7 @@ export const loginController = (req: Request, res: Response) => {
 
     try{
         const user = loginService(email, password, isAdminLogin)
+        
         return res.json({
             message: "Login Succesful",
             token: user?.token,
@@ -23,7 +24,27 @@ export const loginController = (req: Request, res: Response) => {
         })
     }
     catch(err: any){
-        return res.status(400).json({error: err.message})
+        if (err.message === "User not found") {
+            return res.status(404).json({
+                message: "Usuario no encontrado"
+            })
+        }
+        
+        if (err.message === "Invalid credentials") {
+            return res.status(401).json({
+                message: "Credenciales incorrectas"
+            })
+        }
+        
+        if (err.message === "Access denied. Admin credentials required.") {
+            return res.status(403).json({
+                message: "Acceso denegado. Se requieren credenciales de administrador."
+            })
+        }
+        
+        return res.status(500).json({
+            message: "Error interno del servidor"
+        })
     }
 }
 
@@ -41,7 +62,15 @@ export const signupController = (req: Request, res: Response) => {
             }})
     }
     catch(err: any){
-        return res.status(400).json({error: err.message})
+        if (err.message === "User with this email already exists") {
+            return res.status(409).json({
+                message: "Ya existe una cuenta con este correo electrónico"
+            })
+        }
+        
+        return res.status(500).json({
+            message: "Error interno del servidor"
+        })
     }
 }
 
@@ -49,7 +78,7 @@ export const tokenController = (req: Request, res: Response) => {
     try {
         const authHeader = req.headers.authorization
 
-        if(!authHeader) return res.status(401).json({message: "Missing token"})
+        if(!authHeader) return res.status(401)
 
         const token = authHeader.split(" ")[1]
         const decoded = verifyToken(token)
@@ -57,10 +86,10 @@ export const tokenController = (req: Request, res: Response) => {
         const users: User[] = JSON.parse(fs.readFileSync(bd, "utf-8"))
         const user = users.find(u => u.email === decoded.email)
 
-        if(!user) return res.status(401).json({message: "user not found"})
+        if(!user) return res.status(401)
         
         return res.json({ user })
     } catch (error: any) {
-        return res.status(401).json({ message: "Invalid token" })
+        return res.status(401)
     }
 }

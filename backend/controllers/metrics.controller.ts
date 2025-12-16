@@ -4,7 +4,7 @@ import { getUserMetrics, getAdminMetrics } from "../services/metrics.service";
 export const userMetrics = (req: Request, res: Response, next: NextFunction) => {
     try {
         if (!req.user) {
-            return res.status(401).json({message: "User not authenticated"})
+            return res.status(401)
         }
         
         const email = req.user.email
@@ -12,14 +12,14 @@ export const userMetrics = (req: Request, res: Response, next: NextFunction) => 
 
         res.json(metrics)
     } catch (error) {
-        res.status(500).json({message: "Error getting user metrics"})
+        res.status(500)
     }
 }
 
 export const adminMetrics = (req: Request, res: Response, next: NextFunction) => {
     try {
         if (!req.user) {
-            return res.status(401).json({message: "User not authenticated"})
+            return res.status(401)
         }
         
         const email = req.user.email
@@ -27,6 +27,6 @@ export const adminMetrics = (req: Request, res: Response, next: NextFunction) =>
 
         res.json(metrics)
     } catch (error) {
-        res.status(500).json({message: "Error getting user metrics"})
+        res.status(500)
     }
 }

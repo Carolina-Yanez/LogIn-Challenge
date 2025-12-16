@@ -10,9 +10,14 @@ export const loginService = (email: string, password: string, isAdminLogin: bool
 
     const user = users.find((u: User) => u.email === email)
 
-    //Validate credentials
-    if (!user || user.password !== password) {
-        return null
+    // Check if user exists
+    if (!user) {
+        throw new Error("User not found")
+    }
+
+    // Check password
+    if (user.password !== password) {
+        throw new Error("Invalid credentials")
     }
 
     // Validate role if admin login is requested

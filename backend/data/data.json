@@ -3,9 +3,9 @@
     "name": "Carolina",
     "email": "yanezcarolina22@gmail.com",
     "password": "AAAA1234",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcm9saW5hLnlhbmV6QGdsb2JhbnQuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY1ODI4MDUyLCJleHAiOjE3NjU4MzE2NTJ9.qTicHZhOtjRFOpcioC3-CL32HUqkTCPE1CaHb4Ezyu8",
-    "counterLogIn": 20,
-    "lastLogIn": "2025-12-15T19:47:32.384Z",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlhbmV6Y2Fyb2xpbmEyMkBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjU5MDA2ODcsImV4cCI6MTc2NTkwNDI4N30.QFcn9oaCoD-QkMpZ7IBVwVx_aopyq8vKP9KQG9i6ZnA",
+    "counterLogIn": 21,
+    "lastLogIn": "2025-12-16T15:58:07.167Z",
     "role": "ADMIN"
   },
   {
@@ -30,9 +30,9 @@
     "name": "Maria",
     "email": "maria@hotmail.com",
     "password": "2025Luna",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhQGhvdG1haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NjU4MjY5MjAsImV4cCI6MTc2NTgzMDUyMH0.mdkjCSe821rxT9H4VnDT9s_YBocVeW3vqzdBOrgUKxw",
-    "counterLogIn": 2,
-    "lastLogIn": "2025-12-15T19:28:40.162Z",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhQGhvdG1haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NjU4OTc4MDYsImV4cCI6MTc2NTkwMTQwNn0.C9mMNYL-EomBCFHbsnebOIEwEfVBuQWvkmfMeo6h_NE",
+    "counterLogIn": 3,
+    "lastLogIn": "2025-12-16T15:10:06.161Z",
     "role": "USER"
   }
 ]
