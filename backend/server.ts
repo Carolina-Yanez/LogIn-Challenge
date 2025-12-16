@@ -7,7 +7,6 @@ import path from 'path'
 
 dotenv.config({ path: path.join(__dirname, '.env') })
 
-console.log("JWT_SECRET:", process.env.JWT_SECRET)
 const app = express()
 const PORT = process.env.PORT || 3000
 
@@ -21,5 +20,4 @@ app.use("/api/auth", authRoutes)
 app.use("/api/metrics", metricsRoutes)
 
 app.listen(PORT, ()=>{
-    console.log(`Server Running on http://localhost:${PORT}`)
 })

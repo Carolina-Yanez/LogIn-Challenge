@@ -3,18 +3,18 @@
     "name": "Carolina",
     "email": "yanezcarolina22@gmail.com",
     "password": "AAAA1234",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlhbmV6Y2Fyb2xpbmEyMkBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjU5MDA2ODcsImV4cCI6MTc2NTkwNDI4N30.QFcn9oaCoD-QkMpZ7IBVwVx_aopyq8vKP9KQG9i6ZnA",
-    "counterLogIn": 21,
-    "lastLogIn": "2025-12-16T15:58:07.167Z",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlhbmV6Y2Fyb2xpbmEyMkBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjU5MDY4MTYsImV4cCI6MTc2NTkxMDQxNn0.y3y18godR3uqGjMx_3c0OGmqZ1yH8901TQkaIWWFH8w",
+    "counterLogIn": 33,
+    "lastLogIn": "2025-12-16T17:40:16.872Z",
     "role": "ADMIN"
   },
   {
     "name": "Juan",
     "email": "juan@gmail.com",
     "password": "1234Pato",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imp1YW5AZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NjU4MjY4OTgsImV4cCI6MTc2NTgzMDQ5OH0.bFx_nJh-7RqalLKMOz8T2_nZoFzawOXUjqBo8F3M9qk",
-    "counterLogIn": 4,
-    "lastLogIn": "2025-12-15T19:28:18.662Z",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imp1YW5AZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NjU5MDY1MTQsImV4cCI6MTc2NTkwNjUyNH0.kNAtqFUsKkbXdIrY7itFB8mi3nfILSb6h7r77qrTI-c",
+    "counterLogIn": 5,
+    "lastLogIn": "2025-12-16T17:35:14.028Z",
     "role": "USER"
   },
   {
@@ -33,6 +33,15 @@
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhQGhvdG1haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NjU4OTc4MDYsImV4cCI6MTc2NTkwMTQwNn0.C9mMNYL-EomBCFHbsnebOIEwEfVBuQWvkmfMeo6h_NE",
     "counterLogIn": 3,
     "lastLogIn": "2025-12-16T15:10:06.161Z",
+    "role": "USER"
+  },
+  {
+    "name": "Lucia",
+    "email": "lucia@gmail.com",
+    "password": "2025Lucia",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Y2lhQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzY1OTA2ODkyLCJleHAiOjE3NjU5MTA0OTJ9.-ihXBbQnLDi-UCnQeB_0umr1KxpGupOmZufo8GMyVfQ",
+    "counterLogIn": 1,
+    "lastLogIn": "2025-12-16T17:41:32.612Z",
     "role": "USER"
   }
 ]
