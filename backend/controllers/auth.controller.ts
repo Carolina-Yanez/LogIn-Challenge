@@ -93,3 +93,25 @@ export const tokenController = (req: Request, res: Response) => {
         return res.status(401)
     }
 }
+
+export const meController = (req: Request, res: Response) => {
+  try {
+    const email = req.user.email;
+
+    const users: User[] = JSON.parse(
+      fs.readFileSync(bd, "utf-8")
+    );
+
+    const user = users.find(u => u.email === email);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const { password, ...safeUser } = user;
+
+    return res.json(safeUser);
+  } catch {
+    return res.status(401).json({ message: "Invalid token" });
+  }
+};
