@@ -1,5 +1,10 @@
 <div class="dashboard-container">
 
+  <!-- Modal Session Expired -->
+   @if(showSessionModal()){
+    <app-session-expired-modal (ok)="confirmSessionExpired()"></app-session-expired-modal>
+   }
+
   <!-- Header -->
   <header class="dashboard-header">
     <h1>Dashboard</h1>

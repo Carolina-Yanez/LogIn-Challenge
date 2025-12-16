@@ -1,17 +1,19 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component, OnDestroy, OnInit, signal } from "@angular/core";
 import { Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { AuthService } from "../../services/auth.service";
 import { MetricsService, UserMetrics, AdminMetrics } from "../../services/metrics.service";
-import { EMPTY } from 'rxjs';
+import { EMPTY, Subscription } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
+import { SessionExpire } from "../../services/sessionExpire.service";
+import { SessionExpiredModalComponent } from "../../components/modal/modal.component";
 
 @Component({
     templateUrl:'./dashboard.component.html',
     styleUrls: ['./dashboard.component.css'],
-    imports: [CommonModule]
+    imports: [CommonModule, SessionExpiredModalComponent]
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit, OnDestroy{
     user: any;
     loading = signal(true)
     error = signal<string | null>(null)
@@ -19,10 +21,14 @@ export class DashboardComponent implements OnInit{
     adminMetrics = signal<AdminMetrics | null>(null)
     isAdmin = signal(false)
 
+    showSessionModal = signal(false)
+    private sub?: Subscription
+
     constructor(
         private auth: AuthService,
         private metricsService: MetricsService,
-        private router: Router
+        private router: Router,
+        private sessionExpire: SessionExpire
     ){}
 
     ngOnInit(): void {
@@ -34,6 +40,22 @@ export class DashboardComponent implements OnInit{
         }
         
         this.loadMetrics();
+        this.sessionExpire.startWatching()
+
+        this.sub = this.sessionExpire.sessionExpired.subscribe(() =>{
+            this.showSessionModal.set(true)
+        })
+    }
+
+    ngOnDestroy(){
+        this.sessionExpire.stopWatching()
+        this.sub?.unsubscribe()
+    }
+
+    confirmSessionExpired(){
+        this.auth.logout()
+        this.showSessionModal.set(false)
+        this.router.navigate(['/'])
     }
 
     loadMetrics(): void {
