@@ -1,11 +1,11 @@
 [
   {
     "name": "Carolina",
-    "email": "carolina.yanez@globant.com",
+    "email": "yanezcarolina22@gmail.com",
     "password": "AAAA1234",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcm9saW5hLnlhbmV6QGdsb2JhbnQuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY1ODI2ODY5LCJleHAiOjE3NjU4MzA0Njl9.lortBs54p3fOS3oS69jHPh6ksrKg_U8PR9xgLHAiGA4",
-    "counterLogIn": 19,
-    "lastLogIn": "2025-12-15T19:27:49.250Z",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcm9saW5hLnlhbmV6QGdsb2JhbnQuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY1ODI4MDUyLCJleHAiOjE3NjU4MzE2NTJ9.qTicHZhOtjRFOpcioC3-CL32HUqkTCPE1CaHb4Ezyu8",
+    "counterLogIn": 20,
+    "lastLogIn": "2025-12-15T19:47:32.384Z",
     "role": "ADMIN"
   },
   {
