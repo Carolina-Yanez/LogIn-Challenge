@@ -226,32 +226,107 @@
     background: #6c757d !important;
 }
 
-/* Estilos para errores de validación */
+/* Estilos para mensajes de error generales */
+.general-error {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border: 1px solid #fca5a5;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    animation: slideInDown 0.4s ease-out;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.general-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.general-error .error-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.general-error .error-content h4 {
+    color: #dc2626;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+
+.general-error .error-content p {
+    color: #991b1b;
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Estilos para errores de campos */
 .form-group input.error {
-    border-color: #e74c3c;
-    background-color: #fff5f5;
-    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+    border-color: #f87171;
+    background-color: #fef2f2;
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1);
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
 }
 
 .form-group input.error:focus {
-    border-color: #e74c3c;
-    background-color: #fff5f5;
-    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+    border-color: #f87171;
+    background-color: #fef2f2;
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15);
 }
 
-.error {
-    color: #e74c3c;
-    font-size: 12px;
-    margin-top: 5px;
+.field-error {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 8px;
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-radius: 8px;
+    border-left: 3px solid #f87171;
+    animation: fadeInUp 0.3s ease-out;
 }
 
-.error::before {
-    content: '⚠';
-    font-size: 10px;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.field-error .error-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.field-error span:last-child {
+    line-height: 1.4;
 }
 
 .divider {

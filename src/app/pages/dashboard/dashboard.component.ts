@@ -43,9 +43,8 @@ export class DashboardComponent implements OnInit{
         // Cargar métricas según el rol del usuario
         if (this.user?.role === 'ADMIN') {
             this.metricsService.getAdminMetrics().pipe(
-                catchError((error) => {
-                    console.error('Admin metrics error:', error);
-                    this.error.set('Error loading admin data');
+                catchError(() => {
+                    this.error.set('Ha ocurrido un error, vuelva a intentarlo mas tarde');
                     return EMPTY;
                 }),
                 finalize(() => this.loading.set(false))
@@ -56,9 +55,8 @@ export class DashboardComponent implements OnInit{
             });
         } else {
             this.metricsService.getUserMetrics().pipe(
-                catchError((error) => {
-                    console.error('User metrics error:', error);
-                    this.error.set('Error loading user data');
+                catchError(() => {
+                    this.error.set('Ha ocurrido un error, vuelva a intentarlo mas tarde');
                     return EMPTY;
                 }),
                 finalize(() => this.loading.set(false))

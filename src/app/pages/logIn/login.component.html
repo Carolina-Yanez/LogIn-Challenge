@@ -5,6 +5,17 @@
             <p>Ingresa tus credenciales para continuar</p>
         </div>
 
+        <!-- Mensaje de error general -->
+        @if (error()) {
+            <div class="error-message general-error">
+                <div class="error-icon">⚠️</div>
+                <div class="error-content">
+                    <h4>Error de autenticación</h4>
+                    <p>{{ error() }}</p>
+                </div>
+            </div>
+        }
+
         <form class="login-form" [formGroup]="actorForm" (ngSubmit)="ingresar()">
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
@@ -16,10 +27,16 @@
                     [class.error]="actorForm.get('email')?.invalid && actorForm.get('email')?.touched"
                 >
                 @if (actorForm.get('email')?.hasError('email') && actorForm.get('email')?.touched) {
-                    <div class="error">Ingrese un email válido</div>
+                    <div class="field-error">
+                        <span class="error-icon">✉️</span>
+                        <span>Por favor, ingresa un correo electrónico válido</span>
+                    </div>
                 }
                 @if (actorForm.get('email')?.hasError('required') && actorForm.get('email')?.touched) {
-                    <div class="error">Ingrese un usuario</div>
+                    <div class="field-error">
+                        <span class="error-icon">📧</span>
+                        <span>El correo electrónico es obligatorio</span>
+                    </div>
                 }
             </div>
 
@@ -33,7 +50,10 @@
                     [class.error]="actorForm.get('password')?.invalid && actorForm.get('password')?.touched"
                 >
                 @if (actorForm.get('password')?.hasError('required') && actorForm.get('password')?.touched) {
-                    <div class="error">Ingrese su contraseña</div>
+                    <div class="field-error">
+                        <span class="error-icon">🔒</span>
+                        <span>La contraseña es obligatoria</span>
+                    </div>
                 }
             </div>
 
